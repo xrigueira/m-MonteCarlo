@@ -1,2 +1,2 @@
 # m-MonteCarlo
- Monte Carlo simulation for the multivariate case.
+ Monte Carlo test for the multivariate functional data analysis model.
