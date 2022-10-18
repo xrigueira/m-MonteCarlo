@@ -28,7 +28,7 @@ source("fda_u-plotter.R")
 time_frame <- "b" # "a" for months, "b" for weeks, "c" for days
 span <- "a" # This variable is to select different combinations later
 time_step <- "15 min"
-variables <- c("nitrates", "oxygen", "pH",  "temperature", "turbidity")
+variables <- c("conductivity", "nitrates", "oxygen", "pH",  "temperature", "turbidity")
 # variables <- c("conductivity", "nitrates", "oxygen")
 
 # Call the functions to get the results

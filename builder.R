@@ -28,7 +28,6 @@ builder <- function(time_frame, span, time_step, variables) {
 
     # Read the csv file
     df <- read.csv("Database/data_pro.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
-    # df <- read.csv("PreprocessorDaily/Database/data_pro.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
     # df <- read.csv("TestData/argentina_test.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
 
     # Get the number of years in the database
@@ -43,14 +42,6 @@ builder <- function(time_frame, span, time_step, variables) {
     # Get the number of the days available in the database
     days <- c(df$day)[!duplicated(c(df$day))]
 
-    # This has to be converted into R code. Care full with the 32s down in the code
-    #if timestep == '15 min':
-    #    lenMonth = 2976
-    #    lenWeek = 627
-
-    #elif timestep == '1 day':
-    #    lenMonth = 31
-    #    lenWeek = 7
 
     if (time_step == "15 min") {
         # Set number of row for 15 min data
