@@ -1,5 +1,5 @@
 1. Detect the original outliers (DONE)
 2. Remove the detected outliers (DONE)
-3. Add random outliers and label them in the database
+3. Add random outliers and label them in the database (DONE)
 4. Check if they have been detected to get the accuracy
 5. Repeat 3 and 4 100 times (starting from the clean database) and average the accuracy of all iterations to get the final accuracy.

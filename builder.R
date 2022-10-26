@@ -24,11 +24,19 @@ time_getter <- function() {
     return(as.integer(number_timeunit))
 }
 
-builder <- function(time_frame, span, time_step, variables) {
+builder <- function(time_frame, span, time_step, variables, montecarlo) {
 
     # Read the csv file
-    df <- read.csv("Database/data_pro.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
-    # df <- read.csv("TestData/argentina_test.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+    if (montecarlo == "No") {
+
+        df <- read.csv("Database/data_pro.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+        # df <- read.csv("TestData/argentina_test.csv", header = TRUE, sep = ";", stringsAsFactors = FALSE)
+
+    } else if (montecarlo == "Yes") {
+
+        df <- df_clean
+
+    }
 
     # Get the number of years in the database
     years <- c(df$year)[!duplicated(c(df$year))]

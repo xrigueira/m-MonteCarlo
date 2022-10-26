@@ -5,7 +5,7 @@
 magnitude_outliers <- function(df_clean, variables, new_outliers) {
 
     # Get the number that has to multiply the data
-    mag_factor <- runif(1, 50, 150)
+    mag_factor <- runif(1, 1.5, 2.25)
 
     # Now multiply and save it back into df_clean
     df_clean[df_clean$week == new_outliers[1], variables] <- df_clean[df_clean$week == new_outliers[1], variables] * mag_factor
@@ -28,7 +28,7 @@ shape_outliers <- function(df_clean, variables, new_outliers) {
 mixed_outliers <- function(df_clean, variables, new_outliers) {
 
     # Get the number that has to multiply the data
-    mag_factor <- runif(1, 1.5, 5)
+    mag_factor <- runif(1, 1.5, 2.25)
 
     # Now apply both contamination models and it back into df_clean
     df_clean[df_clean$week ==  new_outliers[1], variables] <- abs((df_clean[df_clean$week ==  new_outliers[1], variables]) * sin(df_clean[df_clean$week ==  new_outliers[1], variables])) * mag_factor
@@ -96,6 +96,3 @@ outlier_generator <- function(variables, outliers) {
     return(df_clean)
 
 }
-
-# This is what would have to go in the main file
-df_clean <- outlier_generator(variables, outliers)
