@@ -64,7 +64,7 @@ accuracies <- c()
 counter <- 0
 
 # Start the while loop
-while (counter < 2) {
+while (counter < 1) {
 
     # Clean the database and input the artificial outliers
     df_clean <- outlier_generator(variables, outliers) # Ojo aquí porque en la primera iteración hay que pasar outliers pero luego outliers_mc. Arreglar esto de alguna forma

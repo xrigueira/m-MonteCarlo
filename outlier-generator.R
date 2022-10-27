@@ -19,9 +19,10 @@ shape_outliers <- function(df_clean, variables, new_outliers) {
 
     # Multiply by a sine wave to generate the shape outliers
     # https://rstudio-pubs-static.s3.amazonaws.com/110183_06adc5f01fc940f98fdc0822ac408de0.html
-    df_clean[df_clean$week ==  new_outliers[1], variables] <- abs((df_clean[df_clean$week ==  new_outliers[1], variables]) * sin(df_clean[df_clean$week ==  new_outliers[1], variables]))
+    # df_clean[df_clean$week ==  new_outliers[1], variables] <- abs((df_clean[df_clean$week ==  new_outliers[1], variables]) * sin(df_clean[df_clean$week ==  new_outliers[1], variables]))
+    df_clean[df_clean$week ==  new_outliers[1], variables] <- (df_clean[df_clean$week ==  new_outliers[1], variables]) + (df_clean[df_clean$week ==  new_outliers[1], variables]) * (0.025 * sin(100000 * (df_clean[df_clean$week ==  new_outliers[1], variables])))
     df_clean[df_clean$week ==  new_outliers[1], c('outlier')] <-  1
-
+    # OJO. El segundo modelo puede no ser tan ideal en el caso de las variables que varian muy poco. Se puede ajustar muy bien y no generar un outlier de forma.
     return(df_clean)
 }
 
@@ -31,7 +32,7 @@ mixed_outliers <- function(df_clean, variables, new_outliers) {
     mag_factor <- runif(1, 1.5, 2.25)
 
     # Now apply both contamination models and it back into df_clean
-    df_clean[df_clean$week ==  new_outliers[1], variables] <- abs((df_clean[df_clean$week ==  new_outliers[1], variables]) * sin(df_clean[df_clean$week ==  new_outliers[1], variables])) * mag_factor
+    df_clean[df_clean$week ==  new_outliers[1], variables] <- ((df_clean[df_clean$week ==  new_outliers[1], variables]) + (df_clean[df_clean$week ==  new_outliers[1], variables]) * (0.025 * sin(100000 * (df_clean[df_clean$week ==  new_outliers[1], variables])))) * mag_factor
     df_clean[df_clean$week ==  new_outliers[1], c('outlier')] <-  1
 
     return(df_clean)
